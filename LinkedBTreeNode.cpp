@@ -1,3 +1,10 @@
+/*
+Methods used to implement the LinkedBTreeNode class.
+
+By Soleil Vivero
+11/20/22
+*/
+
 #include "LinkedBTreeNode.h"
 
 // CONSTRUCTORS

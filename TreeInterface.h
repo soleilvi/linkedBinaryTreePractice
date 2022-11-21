@@ -1,3 +1,7 @@
+/*
+The tree interface that our lecturer provided for us.
+*/
+
 #ifndef TREE_INTERFACE
 #define TREE_INTERFACE
 

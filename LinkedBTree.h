@@ -1,10 +1,22 @@
+/*
+This linked binary tree implementation is referenced from the book
+"Data Abstraction & Problem Solving with Walls and Mirrors C++ (Seven-
+th Edition)." It is a simple binary tree, where each node has a maximum 
+of two children and there is no coherent relationship between the val-
+ues of each node.
+
+By Soleil Vivero
+11/20/22
+*/
+
 #ifndef LINKED_BTREE 
 #define LINKED_BTREE
 #include "TreeInterface.h"
 #include "LinkedBTreeNode.h"
 
 template<class ItemType> 
-class LinkedBTree: public TreeInterface<ItemType> { 
+class LinkedBTree: public TreeInterface<ItemType> 
+{ 
 private: 
     LinkedBTreeNode<ItemType>* rootPtr;
 

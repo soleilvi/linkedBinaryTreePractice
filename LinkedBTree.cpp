@@ -1,3 +1,10 @@
+/*
+Methods used to implement the LinkedBTree class.
+
+By Soleil Vivero
+11/19/22
+*/
+
 #include "LinkedBTree.h"
 #include <algorithm>
 #include <stdexcept>
@@ -57,8 +64,6 @@ LinkedBTreeNode<ItemType>* LinkedBTree<ItemType>::balancedAdd(LinkedBTreeNode<It
 template<class ItemType>
 LinkedBTreeNode<ItemType>* LinkedBTree<ItemType>::removeValue(LinkedBTreeNode<ItemType>* subTreePtr, const ItemType target, bool& isSuccessful)
 { 
-    LinkedBTreeNode<ItemType>* nodeToRemovePtr;
-
     if (subTreePtr != nullptr)
     {
         if (subTreePtr->getItem() == target)
@@ -82,8 +87,6 @@ LinkedBTreeNode<ItemType>* LinkedBTree<ItemType>::removeValue(LinkedBTreeNode<It
 template<class ItemType>
 LinkedBTreeNode<ItemType>* LinkedBTree<ItemType>::moveValuesUpTree(LinkedBTreeNode<ItemType>* subTreePtr)
 {
-    LinkedBTreeNode<ItemType>* nodeToRemovePtr;
-
     if (subTreePtr != nullptr)
     {
         if (subTreePtr->isLeaf())
@@ -117,7 +120,7 @@ LinkedBTreeNode<ItemType>* LinkedBTree<ItemType>::moveValuesUpTree(LinkedBTreeNo
 template<class ItemType>
 LinkedBTreeNode<ItemType>* LinkedBTree<ItemType>::findNode(LinkedBTreeNode<ItemType>* subTreePtr, const ItemType& target, bool& isSuccessful) const 
 {
-    LinkedBTreeNode<ItemType>* foundPtr;
+    LinkedBTreeNode<ItemType>* targetPtr;
     
     if (subTreePtr != nullptr) 
     {
@@ -128,13 +131,13 @@ LinkedBTreeNode<ItemType>* LinkedBTree<ItemType>::findNode(LinkedBTreeNode<ItemT
         }
         else
         {
-            foundPtr = findNode(subTreePtr->getLeftChildPtr(), target, isSuccessful);
+            targetPtr = findNode(subTreePtr->getLeftChildPtr(), target, isSuccessful);
 
             // Ensure that we have checked all leftmost nodes before going to their right children
-            if (foundPtr == nullptr)
-                foundPtr = findNode(subTreePtr->getRightChildPtr(), target, isSuccessful);
+            if (targetPtr == nullptr)
+                targetPtr = findNode(subTreePtr->getRightChildPtr(), target, isSuccessful);
             
-            return foundPtr;  // If not null, it's our item
+            return targetPtr;  // If not null, it's our item
         }
     }
 
@@ -150,7 +153,6 @@ void LinkedBTree<ItemType>::destroyTree(LinkedBTreeNode<ItemType>* subTreePtr)
         destroyTree(subTreePtr->getLeftChildPtr());
         destroyTree(subTreePtr->getRightChildPtr());
 
-        // std::cout << subTreePtr->getItem() << std::endl;
         if (subTreePtr == rootPtr) 
         {
             rootPtr = nullptr;
@@ -221,7 +223,7 @@ bool LinkedBTree<ItemType>::isEmpty() const
 template<class ItemType>
 int LinkedBTree<ItemType>::getHeight() const 
 {
-    return getHeightHelper(rootPtr);  // rootPtr used to be just "root"?
+    return getHeightHelper(rootPtr);
 }
 
 // Returns how many nodes there are in the tree
@@ -336,6 +338,7 @@ void LinkedBTree<ItemType>::postorderTraverse(void visit(ItemType&)) const {
 }
 
 // Destructor
-template<class ItemType>LinkedBTree<ItemType>::~LinkedBTree() {
+template<class ItemType>
+LinkedBTree<ItemType>::~LinkedBTree() {
     clear();
 }

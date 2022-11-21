@@ -1,8 +1,17 @@
+/*
+Nodes used for binary trees. They can hold an item and two pointers 
+for their children.
+
+By Soleil Vivero
+11/20/22
+*/
+
 #ifndef LINKED_BTREE_NODE 
 #define LINKED_BTREE_NODE
 
 template<class ItemType> 
-class LinkedBTreeNode{ 
+class LinkedBTreeNode
+{ 
 private: 
     ItemType item;  
     LinkedBTreeNode<ItemType>* leftChildPtr;  

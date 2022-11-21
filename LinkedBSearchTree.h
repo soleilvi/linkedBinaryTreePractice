@@ -1,10 +1,22 @@
+/*
+This linked binary search tree implementation is referenced from the
+book "Data Abstraction & Problem Solving with Walls and Mirrors C++
+(Seventh Edition)." Like any binary search tree, it will sort data that
+is smaller than the root node into the left subtree, and data that is
+greater than the root node into the right subtree.
+
+By Soleil Vivero
+11/20/22
+*/
+
 #ifndef LINKED_BSEARCHTREE 
 #define LINKED_BSEARCHTREE
 #include "LinkedBTreeNode.h"
 #include "LinkedBTree.h"
 
 template<class ItemType> 
-class LinkedBSearchTree : public LinkedBTree<ItemType>{ 
+class LinkedBSearchTree : public LinkedBTree<ItemType>
+{ 
 private: 
     LinkedBTreeNode<ItemType>* rootPtr;
 
