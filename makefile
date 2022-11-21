@@ -5,4 +5,4 @@ main.o: main.cpp LinkedBSearchTree.h
 	g++ -std=c++17 -c main.cpp
 
 clean:
-	rm -f hw6 *.o *.txt
+	rm -f hw6 *.o
